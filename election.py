@@ -45,5 +45,17 @@ from datetime import datetime
 poll_df['Difference'] = (poll_df.Obama - poll_df.Romney)/100
 
 poll_df = poll_df.groupby(['Start Date'],as_index=False,).mean()
-print(poll_df.head())
-# plt.show()
+# print(poll_df.head())
+# fig = poll_df.plot('Start Date', 'Difference',figsize=(12,4),marker='o',linestyle='-',color='purple')
+
+#10/3, 10/11, 10/22
+
+poll_df[poll_df['Start Date'].apply(lambda x: x.startswith('2012-10'))]
+
+fig = poll_df.plot('Start Date', 'Difference',figsize=(12,4),marker='o',linestyle='-',color='purple',xlim=[325,352])
+
+plt.axvline(x=326,linewidth=4,color='gray')
+plt.axvline(x=333,linewidth=4,color='gray')
+plt.axvline(x=343,linewidth=4,color='gray')
+
+plt.show()

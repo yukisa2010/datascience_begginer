@@ -66,4 +66,50 @@ plt.hlines(y=0,xmin=1.0,xmax=50)
 
 # ロジスティック回帰分析
 
+```python
+
+# math.exp(-t) => e**-t
+import math
+
+# ロジスティック関数
+def logistic(t):
+    return 1.0/(1 + math.exp((-1.0)*t))
+
+# -6から6までの点を500個（配列）
+t = np.linspace(-6,6,500)
+# 対象の式を作成
+y = np.array([logistic(ele) for ele in t])
+
+# 点を線で結ぶ
+plt.plot(t,y)
+
+```
+
+## sns.countplot
+
+```python
+# 棒グラフ(x,y)
+sns.countplot(x軸,data=y軸,hue=列名,)
+# hue => 分類分けした複数の棒を表示
+
+
+```
+
+## ダミー変数
+```python
+
+# 列を展開
+# 1.IT系、2.介護系 3.医療系、などのような、数値の大小と関連しないデータを1と0で表現する
+acc_dummies = pd.get_dummies(DataFrame(列データ))
+
+```
+### 多重変遷性
+
+=> ex. male = 0/female = 1
+=> 他重回帰分析において同じ情報を持った列を複数入れるのは良くない。
+=> X.drop(削除したい列,axis=1)
+
+
+
+
 

@@ -7,7 +7,7 @@
 - np.sqrt(x)
     - 平方根
 
-- 重回帰分析
+# 重回帰分析
 ```python
 import sklearn
 from sklearn.linear_model import LinearRegression
@@ -32,6 +32,36 @@ print(lreg.coef_)
 https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 
 from sklearn.model_selection import train_test_split
+# 毎回ランダムにデータ抽出
 X_train, X_test, Y_train, Y_test = train_test_split(X_multi,Y_target)
 
+lreg = LinearRegression()
+lreg.fit(X_train,Y_train)
+
+# Xの学習用・テスト用でそれぞれYの値を予測
+pred_train = lreg.predict(X_train)
+pred_test = lreg.predict(X_test)
+
+# 実際値と予測値の誤差計算
+print(np.mean((Y_train - pred_train)**2),'train')
+print(np.mean((Y_test - pred_test)**2),'test')
+
+
 ```
+
+
+## scatter 散布図
+
+```python
+# 散布図
+plt.scatter(x軸(配列),y軸(配列))
+
+# 水平線・垂直線
+plt.hlines(y=0,xmin=1.0,xmax=50)
+
+```
+- alpha => 透明度
+- c => 色(r,g,b)
+
+
+

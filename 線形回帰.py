@@ -55,18 +55,18 @@ Y = np.array(boston_df.Price)
 X = np.array([[value,1] for value in X],dtype=np.float64)
 # return
 # X = np.array([[value[0],1] for value in X])
-print(X[:4])
-print(Y[:4])
+# print(X[:4])
+# print(Y[:4])
 # X = add_dummy_feature(X)
 
 # print(X[:5])
 # print(np.linalg.lstsq(X,Y))
 
-print(X.dtype,Y.dtype)
-print(X.shape,Y.shape)
+# print(X.dtype,Y.dtype)
+# print(X.shape,Y.shape)
 
-a , b= np.linalg.lstsq(X,Y)[0]
-print(a,b)
+# a , b= np.linalg.lstsq(X,Y)[0]
+# print(a,b)
 
 # y=a*x + b
 
@@ -78,12 +78,34 @@ print(a,b)
 
 # Part3
 
+result = np.linalg.lstsq(X,Y,rcond=None)
+
+error_total = result[1]
+rmse = np.sqrt(error_total/len(X))
+print('平均二乗誤差の平方根={:0.2f}'.format(rmse[0]))
 
 
+# 重回帰分析
 
+import sklearn
+from sklearn.linear_model import LinearRegression
 
+lreg = LinearRegression()
+X_multi = boston_df.drop('Price',1)
 
+# print(X_multi)
 
+Y_target = boston_df.Price
 
+lreg.fit(X_multi,Y_target)
+
+# print(lreg.intercept_)
+# print(lreg.coef_)
 # plt.show()
 
+
+coeff_df = DataFrame(boston_df.columns)
+
+coeff_df.columns = ['Features']
+coeff_df['Coefficient Estimate'] = pd.Series(lreg.coef_)
+print(coeff_df)

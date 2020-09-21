@@ -88,7 +88,9 @@ print('平均二乗誤差の平方根={:0.2f}'.format(rmse[0]))
 # 重回帰分析
 
 import sklearn
+
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
 lreg = LinearRegression()
 X_multi = boston_df.drop('Price',1)
@@ -108,4 +110,8 @@ coeff_df = DataFrame(boston_df.columns)
 
 coeff_df.columns = ['Features']
 coeff_df['Coefficient Estimate'] = pd.Series(lreg.coef_)
-print(coeff_df)
+# print(coeff_df)
+
+X_train, X_test, Y_train, Y_test = train_test_split(X_multi,Y_target)
+
+print(Y_train)

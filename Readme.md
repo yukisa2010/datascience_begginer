@@ -28,4 +28,10 @@ print(lreg.intercept_)
 # 係数(a1,a2,...an)[配列]
 print(lreg.coef_)
 
+# 学習用とテスト用にDataFrameを分ける
+https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, Y_train, Y_test = train_test_split(X_multi,Y_target)
+
 ```

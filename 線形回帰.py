@@ -121,7 +121,6 @@ pred_test = lreg.predict(X_test)
 
 # print(np.mean((Y_train - pred_train)**2),'train')
 # print(np.mean((Y_test - pred_test)**2),'test')
-print(pred_train[0])
 
 train = plt.scatter(pred_train,(pred_train-Y_train),c='b',alpha=0.5)
 test = plt.scatter(pred_test,(pred_test-Y_test),c='r',alpha=0.5)

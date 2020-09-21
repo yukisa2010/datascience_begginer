@@ -64,4 +64,6 @@ plt.hlines(y=0,xmin=1.0,xmax=50)
 - c => 色(r,g,b)
 
 
+# ロジスティック回帰分析
+
 

@@ -109,6 +109,83 @@ acc_dummies = pd.get_dummies(DataFrame(列データ))
 => 他重回帰分析において同じ情報を持った列を複数入れるのは良くない。
 => X.drop(削除したい列,axis=1)
 
+## モデルを用いた学習（ロジスティック回帰分析）
+
+- 前準備（概要）
+1.Yの値を1/0に置き換える
+2.ダミー変数列を用意する
+3.ダミー変数から多重分を消去
+4.1の元となるデータも消去
+5.X,Yをモデルに入れる
+
+```python
+
+# インスタンスの作成
+log_model = LogisticRegression()
+# 学習モデルの登録
+log_model.fit(X,Y)
+# Yの予測値を算出
+class_predict = log_model2.predict(X)
+# Y予測値の正解率を算出（train_test_split）
+metrics.accuracy_score(Y_test,class_predict)
+
+```
+
+
+### 散布図行列
+```python
+sns.pairplot(DataFrame)
+```
+
+## k近傍法
+
+サンプルに一番近いデータを指定した個数分だけ取得する
+```python
+# modelのインスタンス化
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=6)
+# 学習モデルの注入
+knn.fit(X_train, Y_train)
+# テスト
+Y_pred = knn.predict(X)
+
+```
+
+# SVM
+垂直線でクラスタリング
+
+# カーネル法
+φ　写像で分類 2次元 => 3次元
+
+```python
+from sklearn.svm import SVC
+
+model = SVC()
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=0)
+
+model.fit(X_train,Y_train)
+predicted = model.predict(X_test)
+
+from sklearn import metrics
+
+ac = metrics.accuracy_score(Y_test,predicted)
+print(ac)
+
+```
+
+
+# ナイーブベイズ分類
+
+
+
+
+
+
+
+
 
 
 

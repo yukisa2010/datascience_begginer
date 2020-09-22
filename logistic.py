@@ -71,10 +71,37 @@ X = X.drop('affairs',axis=1)
 # Y = Y.values
 Y = np.ravel(Y)
 
+#-----------ここまで前準備-------------
+
+log_model = LogisticRegression()
+
+# 学習モデルの登録
+log_model.fit(X,Y)
+
+# 精密度　0.72
+# print(log_model.score(X,Y))
+
+# 係数の値取得
+# print(log_model.coef_)
+
+
+coeff_df = DataFrame([X.columns, log_model.coef_[0]]).T
+# print(coeff_df)
+
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y)
+
+log_model2 = LogisticRegression()
+
+log_model2.fit(X_train,Y_train)
+
+class_predict = log_model2.predict(X_test)
+
+# 予測値
+# print(class_predict)
+
+# 正確性　　0.7481155778894473
+print(metrics.accuracy_score(Y_test,class_predict))
 
 
 
 
-
-# print(Y.tail())
-# plt.show()
